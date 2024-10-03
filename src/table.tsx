@@ -87,7 +87,7 @@ export const columns: ColumnDef<Data>[] = [
         accessorKey: "date",
         header: "Date",
         cell: ({ row }) => <div>{row.original.date}</div>,
-        filterFn: (row, accessorKey, filterValue) => {
+        filterFn: (row, _, filterValue) => {
             const [min, max] = JSON.parse(filterValue)
             return (
                 isAfter(row.original.date, min) && isBefore(row.original.date, max)
@@ -108,7 +108,7 @@ export const columns: ColumnDef<Data>[] = [
         accessorKey: "no_of_seats",
         header: "No. of Seats",
         cell: ({ row }) => <div>{row.original.no_of_seats}</div>,
-        filterFn: (row, accessorKey, filterValue) => {
+        filterFn: (row, _, filterValue) => {
             const [min, max] = JSON.parse(filterValue)
             return (
                 row.original.no_of_seats >= min && row.original.no_of_seats <= max
@@ -129,7 +129,7 @@ export const columns: ColumnDef<Data>[] = [
         accessorKey: "budget_per_seat",
         header: "Budget per Seat",
         cell: ({ row }) => <div>{row.original.budget_per_seat}</div>,
-        filterFn: (row, accessorKey, filterValue) => {
+        filterFn: (row, _, filterValue) => {
             const [min, max] = JSON.parse(filterValue)
             return (
                 row.original.budget_per_seat >= min && row.original.budget_per_seat <= max
@@ -140,7 +140,7 @@ export const columns: ColumnDef<Data>[] = [
         accessorKey: "visit_planned",
         header: "Visit Planned",
         cell: ({ row }) => <div>{row.original.visit_planned}</div>,
-        filterFn: (row, accessorKey, filterValue) => {
+        filterFn: (row, _, filterValue) => {
             const [min, max] = JSON.parse(filterValue)
             return (
                 isAfter(row.original.visit_planned, min) && isBefore(row.original.visit_planned, max)
