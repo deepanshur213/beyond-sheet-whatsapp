@@ -37,6 +37,7 @@ import Range from "./components/range"
 import { DatePickerWithRange } from "./components/date-range"
 
 import { isAfter, isBefore } from 'date-fns'
+import SendMessages from "./components/send-messages"
 
 export type Data = {
     source: string
@@ -164,7 +165,7 @@ export const columns: ColumnDef<Data>[] = [
     }
 ]
 
-export function DataTable({ data }: { data: Data[] }) {
+export function DataTable({ data }: { data: Data[]}) {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
         []
@@ -193,8 +194,6 @@ export function DataTable({ data }: { data: Data[] }) {
             rowSelection,
         },
     })
-
-    console.log(Array.from(table.getColumn('status')?.getFacetedUniqueValues().keys()!))
 
     return (
         <div className="w-full mt-5">
@@ -251,10 +250,10 @@ export function DataTable({ data }: { data: Data[] }) {
                         <DropdownMenuContent align="end">
                             {/* @ts-ignore */}
                             {Array.from(table.getColumn('requirement')?.getFacetedUniqueValues().keys())
-                                .map((column) => {
+                                .map((column,index) => {
                                     return (
                                         <DropdownMenuCheckboxItem
-                                            key={column}
+                                            key={index}
                                             className="capitalize"
                                             checked={table.getColumn('requirement')?.getFilterValue() == column}
                                             onCheckedChange={(value) => {
@@ -286,10 +285,10 @@ export function DataTable({ data }: { data: Data[] }) {
                         <DropdownMenuContent align="end">
                             {/* @ts-ignore */}
                             {Array.from(table.getColumn('location')?.getFacetedUniqueValues().keys())
-                                .map((column) => {
+                                .map((column,index) => {
                                     return (
                                         <DropdownMenuCheckboxItem
-                                            key={column}
+                                            key={index}
                                             className="capitalize"
                                             checked={table.getColumn('location')?.getFilterValue() == column}
                                             onCheckedChange={(value) => {
@@ -336,10 +335,10 @@ export function DataTable({ data }: { data: Data[] }) {
                         <DropdownMenuContent align="end">
                             {/* @ts-ignore */}
                             {Array.from(table.getColumn('status')?.getFacetedUniqueValues().keys())
-                                .map((column) => {
+                                .map((column,index) => {
                                     return (
                                         <DropdownMenuCheckboxItem
-                                            key={column}
+                                            key={index}
                                             className="capitalize"
                                             checked={table.getColumn('status')?.getFilterValue() == column}
                                             onCheckedChange={(value) => {
@@ -368,6 +367,10 @@ export function DataTable({ data }: { data: Data[] }) {
                         <RefreshCcw className="h-4 w-4 mr-1" />
                         Refresh
                     </Button>
+                </div>
+
+                <div className="flex items-end">
+                <SendMessages numbers={table.getSelectedRowModel().rows.map((row) => row.original.number)}/>
                 </div>
 
             </div>
