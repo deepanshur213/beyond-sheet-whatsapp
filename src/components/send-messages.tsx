@@ -169,13 +169,13 @@ export default function SendMessages({ numbers }: { numbers: string[] }) {
         return
     }
 
-    async function sendTestMessage(data: formType, number: string) {
-        await new Promise(resolve => setTimeout(resolve, 5));
-        if (Math.random() < 0.1) {
-            throw {error: 'Test error'};
-        }
-        return
-    }
+    // async function sendTestMessage(data: formType, number: string) {
+    //     await new Promise(resolve => setTimeout(resolve, 5));
+    //     if (Math.random() < 0.1) {
+    //         throw {error: 'Test error'};
+    //     }
+    //     return
+    // }
 
     async function onSubmit(data: formType) {
         setProgress(0)
