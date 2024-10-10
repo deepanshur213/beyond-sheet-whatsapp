@@ -15,14 +15,13 @@ function App() {
         date: v[1],
         name: v[2],
         number: v[3],
-        no_of_seats: v[4],
-        requirement: v[5],
-        location: v[6],
-        budget_per_seat: v[7],
-        visit_planned: v[8],
-        visit1:v[9],
-        status: v[10],
-        remarks: v[11]
+        requirement: v[4],
+        location: v[5],
+        budget_per_seat: v[6],
+        visit_planned: v[7],
+        visit1:v[8],
+        status: v[9],
+        remarks: v[10]
       })));
   }
 

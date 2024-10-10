@@ -106,17 +106,6 @@ export const columns: ColumnDef<Data>[] = [
         cell: ({ row }) => <div>{row.original.number}</div>,
     },
     {
-        accessorKey: "no_of_seats",
-        header: "No. of Seats",
-        cell: ({ row }) => <div>{row.original.no_of_seats}</div>,
-        filterFn: (row, _, filterValue) => {
-            const [min, max] = JSON.parse(filterValue)
-            return (
-                row.original.no_of_seats >= min && row.original.no_of_seats <= max
-            )
-        },
-    },
-    {
         accessorKey: "requirement",
         header: "Requirement",
         cell: ({ row }) => <div>{row.original.requirement}</div>,
