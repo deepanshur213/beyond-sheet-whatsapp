@@ -354,8 +354,10 @@ export default function SendMessages({ numbers }: { numbers: string[] }) {
                                             />
                                         }
 
-
+                                        <div className="flex items-center justify-between">
                                         <Button type="submit">Send</Button>
+                                        <div>Cost: ₹{Math.floor(numbers.length*0.7846)}(approx)</div>
+                                        </div>
                                     </form>
                                 </Form>
                             </div>
