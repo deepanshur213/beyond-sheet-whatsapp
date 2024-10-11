@@ -175,9 +175,13 @@ export default function SendMessages({ numbers }: { numbers: string[] }) {
     // }
 
     async function onSubmit(data: formType) {
-
-        if (data.header === 'image') {
-            data.image = await uploadImage(data.image!)
+        try{
+            if (data.header === 'image') {
+                data.image = await uploadImage(data.image!)
+            }
+        }catch(error){
+            alert('Error uploading image')
+            return
         }
 
         setProgress(0)
