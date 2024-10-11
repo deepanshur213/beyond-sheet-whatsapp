@@ -84,9 +84,6 @@ export default function SendMessages({ numbers }: { numbers: string[] }) {
 
 
     async function sendMessage(data: formType, number: string) {
-        if (data.header === 'image') {
-            data.image = await uploadImage(data.image!)
-        }
 
         let query: any = {
             messaging_product: "whatsapp",
@@ -178,6 +175,11 @@ export default function SendMessages({ numbers }: { numbers: string[] }) {
     // }
 
     async function onSubmit(data: formType) {
+
+        if (data.header === 'image') {
+            data.image = await uploadImage(data.image!)
+        }
+
         setProgress(0)
         setErrors([])
         for (let i = 0; i < numbers.length; i++) {
